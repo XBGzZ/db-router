@@ -1,0 +1,114 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource.db-router",
+      "type": "icu.xbg.dbrouter.config.DBRouterProperties",
+      "sourceType": "icu.xbg.dbrouter.config.DBRouterProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.common-config",
+      "type": "icu.xbg.dbrouter.config.DBCommonConfig",
+      "sourceType": "icu.xbg.dbrouter.config.DBRouterProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db",
+      "type": "icu.xbg.dbrouter.config.DBProperties",
+      "sourceType": "icu.xbg.dbrouter.config.DBRouterProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.datasource.db-router.common-config.default-d-b-strategy",
+      "type": "java.lang.Class<? extends icu.xbg.dbrouter.strategy.strategys.BaseDataBaseRouteStrategy>",
+      "sourceType": "icu.xbg.dbrouter.config.DBCommonConfig"
+    },
+    {
+      "name": "spring.datasource.db-router.common-config.default-t-b-strategy",
+      "type": "java.lang.Class<? extends icu.xbg.dbrouter.strategy.strategys.BaseTableRouteStrategy>",
+      "sourceType": "icu.xbg.dbrouter.config.DBCommonConfig"
+    },
+    {
+      "name": "spring.datasource.db-router.common-config.driver-class-name",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBCommonConfig"
+    },
+    {
+      "name": "spring.datasource.db-router.common-config.password",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBCommonConfig"
+    },
+    {
+      "name": "spring.datasource.db-router.common-config.user",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBCommonConfig"
+    },
+    {
+      "name": "spring.datasource.db-router.db-pool",
+      "type": "java.util.List<icu.xbg.dbrouter.config.DBProperties>",
+      "sourceType": "icu.xbg.dbrouter.config.DBRouterProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.hash-check",
+      "type": "java.lang.Boolean",
+      "sourceType": "icu.xbg.dbrouter.config.DBRouterProperties",
+      "defaultValue": false
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.db-name",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.driver-class-name",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.mode",
+      "type": "icu.xbg.dbrouter.config.DataSourceMode",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.password",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.pool-builder-class",
+      "type": "java.lang.Class<? extends icu.xbg.dbrouter.datasource.DataSourceBuilder>",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.pool-builder-name",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.pool-detail-config",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.tb-count",
+      "type": "java.lang.Integer",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties",
+      "defaultValue": 1
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.url",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.primary-db.user",
+      "type": "java.lang.String",
+      "sourceType": "icu.xbg.dbrouter.config.DBProperties"
+    },
+    {
+      "name": "spring.datasource.db-router.type",
+      "type": "icu.xbg.dbrouter.config.DataSourceMode",
+      "sourceType": "icu.xbg.dbrouter.config.DBRouterProperties"
+    }
+  ],
+  "hints": []
+}

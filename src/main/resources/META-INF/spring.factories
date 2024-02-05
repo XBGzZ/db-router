@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=icu.xbg.dbrouter.autoConfig.DynamicDataSourceAutoConfig\
+  ,icu.xbg.dbrouter.autoConfig.AopConfig\
+  ,icu.xbg.dbrouter.autoConfig.StrategyConfig\
+  ,icu.xbg.dbrouter.autoConfig.DataSourceBuilderAutoConfig
