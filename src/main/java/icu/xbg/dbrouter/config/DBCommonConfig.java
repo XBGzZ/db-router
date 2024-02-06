@@ -1,7 +1,7 @@
 package icu.xbg.dbrouter.config;
 
-import icu.xbg.dbrouter.strategy.strategys.BaseDataBaseRouteStrategy;
-import icu.xbg.dbrouter.strategy.strategys.BaseTableRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseDataBaseRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseTableRouteStrategy;
 import icu.xbg.dbrouter.strategy.strategys.dbstrategy.DBHashRoute;
 import icu.xbg.dbrouter.strategy.strategys.tbstrategy.TBHashRoute;
 import lombok.Getter;

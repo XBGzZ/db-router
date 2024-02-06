@@ -2,12 +2,9 @@ package icu.xbg.dbrouter.datasource.source;
 
 import icu.xbg.dbrouter.config.DBRouterProperties;
 import icu.xbg.dbrouter.interceptor.SimpleTableInterceptorBuilder;
-import icu.xbg.dbrouter.interceptor.TableInterceptorBuilder;
-import icu.xbg.dbrouter.meta.DefaultMetaResolver;
 import icu.xbg.dbrouter.meta.MetaResolver;
 import icu.xbg.dbrouter.meta.RouteMeta;
 import icu.xbg.dbrouter.strategy.StrategyCache;
-import icu.xbg.dbrouter.strategy.strategys.BaseRouteStrategy;
 
 /**
  * Created with IntelliJ IDEA.

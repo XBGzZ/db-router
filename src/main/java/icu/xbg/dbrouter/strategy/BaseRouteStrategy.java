@@ -1,4 +1,4 @@
-package icu.xbg.dbrouter.strategy.strategys;
+package icu.xbg.dbrouter.strategy;
 
 import icu.xbg.dbrouter.config.DBProperties;
 import icu.xbg.dbrouter.config.DBRouterProperties;

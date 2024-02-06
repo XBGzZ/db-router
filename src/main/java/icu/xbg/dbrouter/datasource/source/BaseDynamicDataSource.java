@@ -10,6 +10,8 @@ import icu.xbg.dbrouter.meta.MetaResolver;
 
 import icu.xbg.dbrouter.meta.RouteMeta;
 import icu.xbg.dbrouter.strategy.StrategyCache;
+import icu.xbg.dbrouter.strategy.strategys.tbstrategy.TBNoRoute;
+import icu.xbg.dbrouter.utils.StringUtils;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 import java.lang.reflect.Proxy;
@@ -83,7 +85,11 @@ public abstract class BaseDynamicDataSource extends AbstractRoutingDataSource {
     @Override
     public Connection getConnection(String username, String password) throws SQLException {
         Connection connection = super.getConnection(username,password);
-        return proxyConnection(connection);
+        // 仅当后缀不为空 && 策略部署TBNoRoute时，使用代理拦截
+        if (StringUtils.hasLength(RouteContext.getTableSuffix())&&!RouteContext.getMetaInfo().getTableRouteStrategy().equals(TBNoRoute.class)){
+           return proxyConnection(connection);
+        }
+        return connection;
     }
 
     private Connection proxyConnection(Connection connection) {

@@ -1,15 +1,11 @@
-package icu.xbg.dbrouter.strategy.strategys;
+package icu.xbg.dbrouter.strategy;
 
 import icu.xbg.dbrouter.config.DBProperties;
 import icu.xbg.dbrouter.config.DBRouterProperties;
 import icu.xbg.dbrouter.context.RouteContext;
 import icu.xbg.dbrouter.meta.RouteMeta;
-import icu.xbg.dbrouter.strategy.RouteStrategy;
-import icu.xbg.dbrouter.strategy.StrategyCache;
 
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
@@ -42,7 +38,7 @@ public abstract class BaseTableRouteStrategy extends BaseRouteStrategy implement
         return calculateDataBaseKey(keyword,args,RouteContext.getMetaInfo(),primaryDB,poolDB);
     }
 
-    public abstract String calculateDataBaseKey(Stream<String> provider, Map<String, Object> args, RouteMeta routeMetaInfo, DBProperties primaryDB, Map<String,DBProperties> poolDB);
+    public abstract String calculateDataBaseKey(Stream<String> keywordsProvider, Map<String, Object> args, RouteMeta routeMetaInfo, DBProperties primaryDB, Map<String,DBProperties> poolDB);
 
 }
 

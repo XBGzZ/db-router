@@ -1,5 +1,6 @@
 package icu.xbg.dbrouter.strategy.strategys;
 
+import icu.xbg.dbrouter.strategy.BaseDataBaseRouteStrategy;
 import icu.xbg.dbrouter.strategy.strategys.dbstrategy.DBHashRoute;
 
 /**

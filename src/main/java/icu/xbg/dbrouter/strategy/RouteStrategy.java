@@ -20,7 +20,9 @@ public interface RouteStrategy {
 
     String getKey(String keyword,Map<String,Object> args);
 
-
+    default String getCacheName(){
+        return this.getClass().getName();
+    };
     StrategyType getStrategyType();
     enum StrategyType{
         Table,DataBase

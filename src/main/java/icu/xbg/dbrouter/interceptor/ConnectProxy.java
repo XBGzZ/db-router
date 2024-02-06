@@ -49,7 +49,7 @@ public abstract class ConnectProxy implements InvocationHandler {
         return method.invoke(realConnection,args);
     }
 
-    private String modifyTableName( Object[] args){
+    private String modifyTableName(Object[] args){
         resolver.resolveAndRecordTable(RouteContext.getMetaInfo(),RouteContext.getMetaInfo().getParam());
         String sql = args[0].toString();
         String[] tbKeys = RouteContext.getTBKeys();

@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class BaseStrategyCache implements StrategyCache {
 
     // 表路由缓存
-    private  Map<Class<? extends RouteStrategy>,RouteStrategy> strategyInstanceCache;
+    private  Map<String,RouteStrategy> strategyInstanceCache;
 
 
     protected BaseStrategyCache(){
@@ -33,17 +33,17 @@ public abstract class BaseStrategyCache implements StrategyCache {
 
     @Override
     public RouteStrategy getStrategy(Class<? extends RouteStrategy> strategyClass) {
-        return strategyInstanceCache.get(strategyClass);
+        return strategyInstanceCache.get(strategyClass.getName());
     }
 
 
     @Override
     public void registerStrategy(RouteStrategy routeStrategy) {
-        strategyInstanceCache.putIfAbsent(routeStrategy.getClass(),routeStrategy);
+        strategyInstanceCache.putIfAbsent(routeStrategy.getCacheName(),routeStrategy);
     }
 
     @Override
     public void removeStrategy(RouteStrategy routeStrategy) {
-        strategyInstanceCache.remove(routeStrategy.getClass());
+        strategyInstanceCache.remove(routeStrategy.getCacheName());
     }
 }

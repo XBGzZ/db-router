@@ -5,7 +5,7 @@ import icu.xbg.dbrouter.config.DBRouterProperties;
 import icu.xbg.dbrouter.context.RouteContext;
 import icu.xbg.dbrouter.meta.RouteMeta;
 import icu.xbg.dbrouter.meta.RouteMetaInfo;
-import icu.xbg.dbrouter.strategy.strategys.BaseDataBaseRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseDataBaseRouteStrategy;
 import icu.xbg.dbrouter.strategy.strategys.DBStrategy;
 import icu.xbg.dbrouter.utils.ArgsUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -64,8 +64,8 @@ public class DataBaseRouteJoinPoint {
             // 用户必须临时指定
             case CUSTOM -> {
                 strategyClass = dbRouter.customStrategy();
-                if (strategyClass.equals(BaseDataBaseRouteStrategy.class)){
-                    throw new RuntimeException("Custom policies must provide implementation subclasses");
+                if (strategyClass.isAssignableFrom(BaseDataBaseRouteStrategy.class)){
+                    throw new RuntimeException("Custom policies must provide implementation customStrategyClass");
                 }
             }
             default -> {

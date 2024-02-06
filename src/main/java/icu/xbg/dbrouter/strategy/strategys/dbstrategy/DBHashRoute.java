@@ -3,10 +3,8 @@ package icu.xbg.dbrouter.strategy.strategys.dbstrategy;
 import icu.xbg.dbrouter.config.DBProperties;
 import icu.xbg.dbrouter.config.DBRouterProperties;
 import icu.xbg.dbrouter.strategy.StrategyCache;
-import icu.xbg.dbrouter.strategy.strategys.BaseDataBaseRouteStrategy;
-import icu.xbg.dbrouter.strategy.strategys.BaseRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseDataBaseRouteStrategy;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;

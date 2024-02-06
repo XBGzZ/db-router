@@ -2,8 +2,7 @@ package icu.xbg.dbrouter.annotation;
 
 
 
-import icu.xbg.dbrouter.strategy.RouteStrategy;
-import icu.xbg.dbrouter.strategy.strategys.BaseDataBaseRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseDataBaseRouteStrategy;
 import icu.xbg.dbrouter.strategy.strategys.DBStrategy;
 
 import java.lang.annotation.*;
@@ -30,10 +29,21 @@ public @interface DBRouter {
      */
     String keywords() default "";
 
-    // 策略
+    /**
+     *  表路由策略
+     *  AUTO: 开启自动方式，默认，以配置文件为主，如果配置文件中
+     *      没有配置默认策略，那么不路由，
+     *  CUSTOM: CUSTOM策略必须填写 customStrategy指定
+     *
+     *  其他: 指定对应策略
+     * @return
+     */
     DBStrategy strategy() default DBStrategy.AUTO;
 
-    // 如果customStrategy的值不为Empty那么就以custom为准
+    /**
+     * 提供自定义表路由策略
+     * @return
+     */
     Class<? extends BaseDataBaseRouteStrategy> customStrategy() default BaseDataBaseRouteStrategy.class;
 
 }

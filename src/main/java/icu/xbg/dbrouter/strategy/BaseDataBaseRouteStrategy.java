@@ -1,8 +1,7 @@
-package icu.xbg.dbrouter.strategy.strategys;
+package icu.xbg.dbrouter.strategy;
 
 import icu.xbg.dbrouter.config.DBProperties;
 import icu.xbg.dbrouter.config.DBRouterProperties;
-import icu.xbg.dbrouter.strategy.StrategyCache;
 
 import java.util.List;
 import java.util.Map;
@@ -38,5 +37,5 @@ public abstract class BaseDataBaseRouteStrategy extends BaseRouteStrategy {
        return calculateDataBaseKey(provider,args, primaryDB,poolDB,poolDBProperties);
     }
 
-    public abstract String calculateDataBaseKey(Stream<String> provider, Map<String, Object> args, DBProperties primaryDB, Map<String,DBProperties> poolDB, List<DBProperties> poolDBList);
+    public abstract String calculateDataBaseKey(Stream<String> keywordsProvider, Map<String, Object> args, DBProperties primaryDB, Map<String,DBProperties> poolDB, List<DBProperties> poolDBList);
 }

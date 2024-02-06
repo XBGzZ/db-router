@@ -1,8 +1,7 @@
 package icu.xbg.dbrouter.meta;
 
-import icu.xbg.dbrouter.strategy.strategys.BaseDataBaseRouteStrategy;
-import icu.xbg.dbrouter.strategy.strategys.BaseRouteStrategy;
-import icu.xbg.dbrouter.strategy.strategys.BaseTableRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseDataBaseRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseTableRouteStrategy;
 import lombok.Getter;
 import lombok.Setter;
 

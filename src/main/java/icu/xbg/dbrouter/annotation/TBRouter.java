@@ -1,13 +1,10 @@
 package icu.xbg.dbrouter.annotation;
 
 
-import icu.xbg.dbrouter.strategy.RouteStrategy;
-import icu.xbg.dbrouter.strategy.strategys.BaseTableRouteStrategy;
-import icu.xbg.dbrouter.strategy.strategys.DBStrategy;
+import icu.xbg.dbrouter.strategy.BaseTableRouteStrategy;
 import icu.xbg.dbrouter.strategy.strategys.TBStrategy;
 
 import java.lang.annotation.*;
-import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -29,15 +26,33 @@ public @interface TBRouter {
      */
     String keywords() default "";
 
+    /**
+     *  表名
+     */
     String tableName() default "";
 
-    // 策略
+    /**
+     *  表路由策略
+     *  AUTO: 开启自动方式，默认，以配置文件为主，如果配置文件中
+     *      没有配置默认策略，那么不路由，
+     *  CUSTOM: CUSTOM策略必须填写 customStrategy指定
+     *
+     *  其他: 指定对应策略
+     * @return
+     */
     TBStrategy strategy() default TBStrategy.AUTO;
 
-    int tableCount() default 1;
+    /**
+     * 表数量，默认为0,如果超过0，以注释优先
+     * 如果小于0，按配置文件来，表后缀默认从0开始
+     * @return
+     */
+    int tableCount() default 0;
 
-    boolean complexMode() default false;
-    // 如果customStrategy的值不为Empty那么就以custom为准
+    /**
+     * 提供自定义表路由策略
+     * @return
+     */
     Class<? extends BaseTableRouteStrategy> customStrategy() default BaseTableRouteStrategy.class;
 
 

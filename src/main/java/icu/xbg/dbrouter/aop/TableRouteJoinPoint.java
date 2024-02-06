@@ -7,22 +7,16 @@ import icu.xbg.dbrouter.config.DBRouterProperties;
 import icu.xbg.dbrouter.context.RouteContext;
 import icu.xbg.dbrouter.meta.RouteMeta;
 import icu.xbg.dbrouter.meta.RouteMetaInfo;
-import icu.xbg.dbrouter.strategy.strategys.BaseTableRouteStrategy;
+import icu.xbg.dbrouter.strategy.BaseTableRouteStrategy;
 import icu.xbg.dbrouter.strategy.strategys.TBStrategy;
 import icu.xbg.dbrouter.utils.ArgsUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -63,7 +57,7 @@ public class TableRouteJoinPoint {
     private void initTableCount(TBRouter tbRouter, RouteMeta routeMeta) {
         int i = tbRouter.tableCount();
         // 超过0 采用注解策略
-        if (i<=1){
+        if (i<1){
             String dataSourceName = RouteContext.getMetaInfo().getDataSourceName();
             DBProperties dbProperties = null;
             if (StringUtils.hasLength(dataSourceName)){
