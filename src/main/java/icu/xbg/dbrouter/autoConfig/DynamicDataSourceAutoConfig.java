@@ -23,9 +23,11 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 import javax.sql.DataSource;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -45,7 +47,10 @@ public class DynamicDataSourceAutoConfig {
     @Bean
     @ConditionalOnMissingBean(MetaResolver.class)
     public MetaResolver resolverCustomCache(@Autowired(required = false) StrategyCache cache){
-        return new DefaultMetaResolver(Optional.of(cache).orElse(DefaultStrategyCache.getInstance()));
+        if (Objects.isNull(cache)){
+            cache = DefaultStrategyCache.getInstance();
+        }
+        return new DefaultMetaResolver(cache);
     }
 
 
@@ -64,7 +69,10 @@ public class DynamicDataSourceAutoConfig {
                                                                     DataSourceBuilderManager builderManager,
                                                                     MetaResolver resolver,
                                                                     @Autowired(required = false)TableInterceptorBuilder builder){
-        return new SimpleDynamicDataSourceBuilder(properties,builderManager,resolver,Optional.of(builder).orElse(new SimpleTableInterceptorBuilder(resolver)));
+        if (Objects.isNull(builder)){
+            builder = new SimpleTableInterceptorBuilder(resolver);
+        }
+        return new SimpleDynamicDataSourceBuilder(properties,builderManager,resolver,builder);
     }
 
     /**
