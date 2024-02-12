@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  路由策略 缓存模板
  * </pre>
  *
  * @author XBG

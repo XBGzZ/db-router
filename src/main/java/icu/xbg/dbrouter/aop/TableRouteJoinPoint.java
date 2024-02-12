@@ -24,7 +24,11 @@ import java.util.Optional;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *  TB上下文拦截，构造MetaInfo
+ *  表路由注解的切面方法，用来填写表上下文信息
+ *
+ *  表路由则是在数据库连接上之后才需要获取的
+ *  因为其原理是在sql提交之前拦截，所以顺序
+ *  上应该尽量靠后，采用默认顺序即可
  * </pre>
  *
  * @author XBG

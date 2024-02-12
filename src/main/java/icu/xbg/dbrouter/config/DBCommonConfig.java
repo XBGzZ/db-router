@@ -11,7 +11,7 @@ import lombok.Setter;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *   数据源通用配置
  * </pre>
  *
  * @author XBG

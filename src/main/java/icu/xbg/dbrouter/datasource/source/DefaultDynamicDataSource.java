@@ -2,6 +2,7 @@ package icu.xbg.dbrouter.datasource.source;
 
 import icu.xbg.dbrouter.config.DBRouterProperties;
 import icu.xbg.dbrouter.interceptor.SimpleTableInterceptorBuilder;
+import icu.xbg.dbrouter.interceptor.TableInterceptorBuilder;
 import icu.xbg.dbrouter.meta.MetaResolver;
 import icu.xbg.dbrouter.meta.RouteMeta;
 import icu.xbg.dbrouter.strategy.StrategyCache;
@@ -19,13 +20,8 @@ import icu.xbg.dbrouter.strategy.StrategyCache;
  */
 public class DefaultDynamicDataSource extends BaseDynamicDataSource {
 
-    public DefaultDynamicDataSource(DBRouterProperties properties, StrategyCache cache,MetaResolver resolver) {
-        super(new SimpleTableInterceptorBuilder(resolver,cache),properties);
-    }
-    // 采用这种方式可以替换表拦截
-
-    public DefaultDynamicDataSource(MetaResolver resolver, DBRouterProperties properties,StrategyCache cache) {
-        super(resolver, properties,cache);
+    public DefaultDynamicDataSource(MetaResolver resolver, DBRouterProperties properties, TableInterceptorBuilder builder) {
+        super(resolver, properties, builder);
     }
 
     @Override

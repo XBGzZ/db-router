@@ -9,11 +9,13 @@ import icu.xbg.dbrouter.datasource.builder.manager.SimpleDataSourceManager;
 import icu.xbg.dbrouter.datasource.builder.strategy.HikariCPDataSourceBuilder;
 import icu.xbg.dbrouter.datasource.source.BaseDynamicDataSource;
 import icu.xbg.dbrouter.interceptor.SimpleTableInterceptorBuilder;
+import icu.xbg.dbrouter.interceptor.TableInterceptorBuilder;
 import icu.xbg.dbrouter.meta.DefaultMetaResolver;
 import icu.xbg.dbrouter.meta.MetaResolver;
 import icu.xbg.dbrouter.strategy.StrategyCache;
 import icu.xbg.dbrouter.strategy.cache.DefaultStrategyCache;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
@@ -24,12 +26,13 @@ import org.springframework.context.annotation.Import;
 
 import javax.sql.DataSource;
 import java.util.Iterator;
+import java.util.Optional;
 
 /**
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  动态数据源注入
  * </pre>
  *
  * @author XBG
@@ -39,47 +42,29 @@ import java.util.Iterator;
 @EnableConfigurationProperties(DBRouterProperties.class)
 public class DynamicDataSourceAutoConfig {
 
-    @ConditionalOnMissingBean(StrategyCache.class)
-    static class NoCache{
-        @Bean
-        @ConditionalOnMissingBean(MetaResolver.class)
-        public MetaResolver resolver(){
-            return new DefaultMetaResolver();
-        }
-
-        @Bean
-        @ConditionalOnMissingBean(value = {DynamicDataSourceBuilder.class, SimpleTableInterceptorBuilder.class})
-        @ConditionalOnBean({MetaResolver.class})
-        public DynamicDataSourceBuilder defaultDynamicDataSourceFactory(DBRouterProperties properties,DataSourceBuilderManager builderManager,MetaResolver resolver){
-            return new SimpleDynamicDataSourceBuilder(properties,builderManager, DefaultStrategyCache.getInstance(),resolver);
-        }
-
+    @Bean
+    @ConditionalOnMissingBean(MetaResolver.class)
+    public MetaResolver resolverCustomCache(@Autowired(required = false) StrategyCache cache){
+        return new DefaultMetaResolver(Optional.of(cache).orElse(DefaultStrategyCache.getInstance()));
     }
 
 
-    @ConditionalOnBean(StrategyCache.class)
-    static class CustomCache{
-        @Bean
-        @ConditionalOnMissingBean(MetaResolver.class)
-        public MetaResolver resolverCustomCache(StrategyCache cache){
-            return new DefaultMetaResolver(cache);
-        }
 
-
-
-        /**
-         * 数据源工厂，核心的工厂，主要作用建造动态数据源
-         * 将配置和子数据源构造器放入，然后注入Spring容器
-         * @param properties
-         * @param builderManager
-         * @return
-         */
-        @Bean
-        @ConditionalOnMissingBean(value = {DynamicDataSourceBuilder.class, SimpleTableInterceptorBuilder.class})
-        @ConditionalOnBean({MetaResolver.class})
-        public DynamicDataSourceBuilder defaultDynamicDataSourceFactory(DBRouterProperties properties,DataSourceBuilderManager builderManager,MetaResolver resolver,StrategyCache cache){
-            return new SimpleDynamicDataSourceBuilder(properties,builderManager,cache,resolver);
-        }
+    /**
+     * 数据源工厂，核心的工厂，主要作用建造动态数据源
+     * 将配置和子数据源构造器放入，然后注入Spring容器
+     * @param properties
+     * @param builderManager
+     * @return
+     */
+    @Bean
+    @ConditionalOnMissingBean(value = {DynamicDataSourceBuilder.class, SimpleDynamicDataSourceBuilder.class})
+    @ConditionalOnBean({MetaResolver.class})
+    public DynamicDataSourceBuilder defaultDynamicDataSourceFactory(DBRouterProperties properties,
+                                                                    DataSourceBuilderManager builderManager,
+                                                                    MetaResolver resolver,
+                                                                    @Autowired(required = false)TableInterceptorBuilder builder){
+        return new SimpleDynamicDataSourceBuilder(properties,builderManager,resolver,Optional.of(builder).orElse(new SimpleTableInterceptorBuilder(resolver)));
     }
 
     /**

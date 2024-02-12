@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+
 import java.util.Map;
 import java.util.Optional;
 
@@ -21,7 +22,15 @@ import java.util.Optional;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *   需要注意事务的执行顺序
+ *   数据库路由的切面处理方法，用来获取上下文信息
+ *
+ *   注意点：由于声明式事务会利用切面来讲方法包裹
+ *   使用拦截链的方式来处理，但是不管如何其本身需
+ *   要获取数据库连接。
+ *   因此会在事务切面中获取数据库连接（getConnection）
+ *   导致时机比原本提前，所以需要DataBaseRouteJoinPoint
+ *   的执行时机在事务切面之前
+ *
  * </pre>
  *
  * @author XBG
@@ -68,9 +77,9 @@ public class DataBaseRouteJoinPoint {
                     throw new RuntimeException("Custom policies must provide implementation customStrategyClass");
                 }
             }
-            default -> {
+            default ->
                 strategyClass = strategy.getStrategyClass();
-            }
+
         }
         meta.setDataBaseRouteStrategy(strategyClass);
         meta.setDbKeywords(dbRouter.keywords());

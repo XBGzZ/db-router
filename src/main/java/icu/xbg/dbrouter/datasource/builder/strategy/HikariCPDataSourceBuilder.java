@@ -16,7 +16,8 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *   做最简单的配置
+ *   HikariCP 连接池构造器
+ *   只做了最简单的配置
  * </pre>
  *
  * @author XBG

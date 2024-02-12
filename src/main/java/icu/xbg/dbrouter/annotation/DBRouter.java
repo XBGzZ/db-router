@@ -12,12 +12,13 @@ import java.lang.annotation.*;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *     路由策略
+ *     数据库路由策略注解
  * </pre>
  *
  * @author XBG
  * @date 2023-12-26 16:32
  */
+// TODO 后续将会支持 类级别注解
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})

@@ -19,7 +19,7 @@ import java.util.Optional;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *     初始化构造缓存
  * </pre>
  *
  * @author XBG
@@ -42,7 +42,7 @@ public class StrategyInitializer {
 
 
     @PostConstruct
-    public void loadDefaultStrategys(){
+    public void loadDefaultStrategies(){
         List<Class<?>> classes = ClassLoadUtil.getClasses(ROOT_PACKAGE);
         for (Class<?> clazz:classes){
             if (RouteStrategy.class.isAssignableFrom(clazz)){

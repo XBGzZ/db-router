@@ -9,7 +9,8 @@ import java.util.Map;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  路由元数据，这些数据是最终路由的依据
+ *  保存在RouteContext中
  * </pre>
  *
  * @author XBG

@@ -7,7 +7,7 @@ import icu.xbg.dbrouter.strategy.strategys.dbstrategy.DBHashRoute;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  策略枚举，提供简便的写法
  * </pre>
  *
  * @author XBG

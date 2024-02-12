@@ -9,14 +9,14 @@ import org.springframework.context.annotation.Configuration;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  切面注入
  * </pre>
  *
  * @author XBG
  * @date 2024-02-04 21:15
  */
 @Configuration
-public class AopConfig {
+public class AopAutoConfig {
 
     @Bean
     public DataBaseRouteJoinPoint dataBase(){

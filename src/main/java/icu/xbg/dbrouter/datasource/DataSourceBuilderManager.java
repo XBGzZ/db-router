@@ -4,7 +4,7 @@ package icu.xbg.dbrouter.datasource;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  数据源构造器管理者
  * </pre>
  *
  * @author XBG

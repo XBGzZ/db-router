@@ -12,7 +12,7 @@ import javax.sql.DataSource;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *     单一连接构造器
  * </pre>
  *
  * @author XBG

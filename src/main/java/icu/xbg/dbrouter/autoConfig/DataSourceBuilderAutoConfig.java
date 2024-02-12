@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  数据源构造器注入
  * </pre>
  *
  * @author XBG

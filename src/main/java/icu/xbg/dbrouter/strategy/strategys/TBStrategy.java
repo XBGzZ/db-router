@@ -7,7 +7,7 @@ import icu.xbg.dbrouter.strategy.strategys.tbstrategy.TBHashRoute;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  表策略，提供简便写法
  * </pre>
  *
  * @author XBG

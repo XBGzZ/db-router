@@ -2,7 +2,10 @@ package icu.xbg.dbrouter.annotation;
 
 
 
+import icu.xbg.dbrouter.autoConfig.AopAutoConfig;
+import icu.xbg.dbrouter.autoConfig.DataSourceBuilderAutoConfig;
 import icu.xbg.dbrouter.autoConfig.DynamicDataSourceAutoConfig;
+import icu.xbg.dbrouter.autoConfig.StrategyInitializer;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -11,7 +14,7 @@ import java.lang.annotation.*;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *    开关
+ *    如果不支持factory，可以使用Enable方式注入
  * </pre>
  *
  * @author XBG
@@ -20,8 +23,6 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-// 自动配置开关
-@Import(DynamicDataSourceAutoConfig.class)
-@Deprecated
+@Import({DynamicDataSourceAutoConfig.class, AopAutoConfig.class, StrategyInitializer.class, DataSourceBuilderAutoConfig.class})
 public @interface EnableRouter {
 }

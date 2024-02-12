@@ -14,7 +14,9 @@ import java.util.stream.Stream;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  简单的Hash路由，针对Table的路由
+ *  只能和方法入参进行匹配，只能匹配参数名
+ *  不能深度匹配
  * </pre>
  *
  * @author XBG

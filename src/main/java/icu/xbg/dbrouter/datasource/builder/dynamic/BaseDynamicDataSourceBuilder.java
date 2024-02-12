@@ -19,7 +19,7 @@ import java.util.*;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  动态数据源构造模板
  * </pre>
  *
  * @author XBG
@@ -39,7 +39,7 @@ public abstract class BaseDynamicDataSourceBuilder implements DynamicDataSourceB
 
     private final DataSourceBuilderManager dataSourceBuilderManager;
 
-    public BaseDynamicDataSourceBuilder(DBRouterProperties properties, MetaResolver metaResolver, DynamicDataSourceFactory factory,DataSourceBuilderManager dataSourceBuilderManager) {
+    protected BaseDynamicDataSourceBuilder(DBRouterProperties properties, MetaResolver metaResolver, DynamicDataSourceFactory factory,DataSourceBuilderManager dataSourceBuilderManager) {
         this.properties = properties;
         this.factory = factory;
         this.metaResolver = metaResolver;

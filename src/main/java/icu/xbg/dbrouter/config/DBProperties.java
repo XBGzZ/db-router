@@ -3,7 +3,6 @@ package icu.xbg.dbrouter.config;
 import icu.xbg.dbrouter.datasource.DataSourceBuilder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 

@@ -23,7 +23,7 @@ public abstract class AbstractMetaResolver implements MetaResolver{
 
 
 
-    public AbstractMetaResolver(StrategyCache cache){
+    protected AbstractMetaResolver(StrategyCache cache){
         this.cache = cache;
     }
 
@@ -34,18 +34,17 @@ public abstract class AbstractMetaResolver implements MetaResolver{
         return Objects.isNull(strategyClass)?null:cache.getStrategy(strategyClass);
     }
     @Override
-    public String[] resolveAndRecordTable(RouteMeta meta, Map<String,Object> params) {
+    public void resolveAndRecordTableInfo(RouteMeta meta, Map<String,Object> params) {
         String suffix = resolve(meta.getTbKeywords(), getStrategy(meta.getTableRouteStrategy()), params);
         recordTableSuffix(suffix);
         RouteContext.setTBKeys(meta.getTableName());
-        return meta.getTableName();
+        meta.getTableName();
     }
 
     @Override
-    public String resolveDataBase(RouteMeta meta, Map<String,Object> params) {
+    public void resolveAndRecordDataBaseInfo(RouteMeta meta, Map<String,Object> params) {
         String dbName = resolve(meta.getDbKeywords(), getStrategy(meta.getDataBaseRouteStrategy()), params);
         recordDataBaseName(dbName);
-        return dbName;
     }
 
     // 记录数据

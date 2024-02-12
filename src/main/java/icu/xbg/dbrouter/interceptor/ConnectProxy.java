@@ -15,7 +15,8 @@ import java.util.Optional;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *     连接代理，使用了JDK动态代理
+ *     用于拦截SQL
  * </pre>
  *
  * @author XBG
@@ -32,7 +33,7 @@ public abstract class ConnectProxy implements InvocationHandler {
     private MetaResolver resolver;
     private static final String TARGET_NAME = "prepareStatement";
 
-    public ConnectProxy(Connection connection, DBProperties properties,MetaResolver resolver) {
+    protected ConnectProxy(Connection connection, DBProperties properties,MetaResolver resolver) {
         realConnection = connection;
         this.properties = properties;
         this.resolver = resolver;
@@ -50,7 +51,7 @@ public abstract class ConnectProxy implements InvocationHandler {
     }
 
     private String modifyTableName(Object[] args){
-        resolver.resolveAndRecordTable(RouteContext.getMetaInfo(),RouteContext.getMetaInfo().getParam());
+        resolver.resolveAndRecordTableInfo(RouteContext.getMetaInfo(),RouteContext.getMetaInfo().getParam());
         String sql = args[0].toString();
         String[] tbKeys = RouteContext.getTBKeys();
         String dbKey = RouteContext.getDBKey();

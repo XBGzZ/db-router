@@ -7,7 +7,7 @@ import icu.xbg.dbrouter.meta.MetaResolver;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  动态数据源工厂，只是生产动态数据源
  * </pre>
  *
  * @author XBG

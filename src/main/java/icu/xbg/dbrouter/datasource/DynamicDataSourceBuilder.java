@@ -6,7 +6,8 @@ import icu.xbg.dbrouter.datasource.source.BaseDynamicDataSource;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *  动态数据源构造
+ *  动态数据源构造者
+ *  负责装配
  * </pre>
  *
  * @author XBG

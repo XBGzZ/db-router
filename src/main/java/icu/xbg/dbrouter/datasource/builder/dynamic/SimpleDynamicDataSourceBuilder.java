@@ -8,6 +8,7 @@ import icu.xbg.dbrouter.datasource.DataSourceBuilderManager;
 import icu.xbg.dbrouter.datasource.DynamicDataSourceFactory;
 import icu.xbg.dbrouter.datasource.source.DefaultDynamicDataSource;
 import icu.xbg.dbrouter.interceptor.SimpleTableInterceptorBuilder;
+import icu.xbg.dbrouter.interceptor.TableInterceptorBuilder;
 import icu.xbg.dbrouter.meta.DefaultMetaResolver;
 import icu.xbg.dbrouter.meta.MetaResolver;
 import icu.xbg.dbrouter.strategy.StrategyCache;
@@ -22,7 +23,9 @@ import java.util.Objects;
  * Created with IntelliJ IDEA.
  * Description:
  * <pre style="color:#51c4d3">
- *
+ *  动态数据源简单实现，此处定义了
+ *  {@link DataSourceMode} 的对应
+ *  处理策略
  * </pre>
  *
  * @author XBG
@@ -30,8 +33,8 @@ import java.util.Objects;
  */
 public class SimpleDynamicDataSourceBuilder extends BaseDynamicDataSourceBuilder {
 
-    public SimpleDynamicDataSourceBuilder(DBRouterProperties properties, DataSourceBuilderManager dataSourceBuilderManager, StrategyCache cache,MetaResolver resolver) {
-        this(properties, new DefaultMetaResolver(),  (a) -> new DefaultDynamicDataSource(properties,cache,resolver),dataSourceBuilderManager);
+    public SimpleDynamicDataSourceBuilder(DBRouterProperties properties, DataSourceBuilderManager dataSourceBuilderManager,MetaResolver resolver, TableInterceptorBuilder builder) {
+        this(properties, new DefaultMetaResolver(),  (a) -> new DefaultDynamicDataSource(resolver,properties,builder),dataSourceBuilderManager);
     }
 
     public SimpleDynamicDataSourceBuilder(DBRouterProperties properties, MetaResolver metaResolver, DynamicDataSourceFactory factory, DataSourceBuilderManager dataSourceBuilderManager) {
